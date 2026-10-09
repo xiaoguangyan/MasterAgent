@@ -1,9 +1,10 @@
 # 版权所有：xiaoguang.yan（8518960@qq.com）
 # 描述：忽略构建产物与 IDE 本地文件。
 
-# Gradle（端侧四工程）
+# Gradle / Kotlin（端侧四工程）
 **/.gradle/
 **/build/
+**/.kotlin/
 **/gradle/gradle-daemon-jvm.properties
 
 # Maven（云侧）
@@ -24,6 +25,5 @@ local.properties
 # 本地工具状态
 .claude/
 
-# 非本仓库提交范围（含真实密钥 / 独立工程 / 备份，避免 git add . 误提交泄露）
-android-host/
+# 非本仓库提交范围（本地备份等，避免 git add . 误提交）
 back-config/

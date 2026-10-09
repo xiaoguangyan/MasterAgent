@@ -1,0 +1,4 @@
+#FSA 1.0;
+0	1	<esr>
+;
+<esr>:open the door|close the window;
