@@ -1,0 +1,29 @@
+# 版权所有：xiaoguang.yan（8518960@qq.com）
+# 描述：忽略构建产物与 IDE 本地文件。
+
+# Gradle（端侧四工程）
+**/.gradle/
+**/build/
+**/gradle/gradle-daemon-jvm.properties
+
+# Maven（云侧）
+cloud/**/target/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.class
+local.properties
+
+# 系统
+.DS_Store
+*~
+~$*.docx
+
+# 本地工具状态
+.claude/
+
+# 非本仓库提交范围（含真实密钥 / 独立工程 / 备份，避免 git add . 误提交泄露）
+android-host/
+back-config/

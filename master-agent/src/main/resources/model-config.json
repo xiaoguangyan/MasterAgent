@@ -1,0 +1,95 @@
+{
+  "version": "1.2.0",
+  "slowLane": {
+    "mode": "rule",
+    "executeThreshold": 0.80,
+    "confirmThreshold": 0.40,
+    "slowTriggerThreshold": 0.85
+  },
+  "models": {
+    "m_intent": {
+      "name": "Qwen2.5-14B-Instruct",
+      "size": "14B",
+      "temperature": 0.2,
+      "topP": 0.9,
+      "maxTokens": 1024,
+      "contextLength": 32768,
+      "stream": true,
+      "quantization": "INT8/FP16",
+      "deploy": "cloud",
+      "backend": "vLLM",
+      "endpoint": "https://localhost/v1/chat/completions",
+      "apiKey": "",
+      "role": "意图理解/意图拆分 M-intent（Prompt A1/A1-split）"
+    },
+    "m_intent_edge": {
+      "name": "Qwen2.5-1.5B-Instruct",
+      "size": "1.5B",
+      "temperature": 0.2,
+      "topP": 0.9,
+      "maxTokens": 512,
+      "contextLength": 8192,
+      "stream": false,
+      "quantization": "INT4",
+      "deploy": "edge",
+      "backend": "Qualcomm 8295/8797 Hexagon NPU + QNN",
+      "endpoint": "",
+      "apiKey": "",
+      "role": "端侧意图兜底 + 轻量快道"
+    },
+    "m_planner": {
+      "name": "DeepSeek-V4-Pro",
+      "size": "32B",
+      "temperature": 0.1,
+      "topP": 0.9,
+      "maxTokens": 4096,
+      "contextLength": 32768,
+      "stream": false,
+      "quantization": "INT8",
+      "deploy": "cloud",
+      "backend": "vLLM",
+      "endpoint": "https://localhost/v1/chat/completions",
+      "apiKey": "",
+      "role": "深度推理/规划 M-planner（Prompt A2）"
+    },
+    "m_arbiter": {
+      "name": "Qwen/Qwen2.5-14B-Instruct",
+      "size": "14B",
+      "temperature": 0.2,
+      "topP": 0.9,
+      "maxTokens": 256,
+      "contextLength": 32768,
+      "stream": false,
+      "quantization": "",
+      "deploy": "cloud",
+      "backend": "vLLM",
+      "endpoint": "https://localhost/v1/chat/completions",
+      "apiKey": "",
+      "role": "仲裁 M-arbiter（Prompt A3，二期可选）"
+    },
+    "asr_edge": {
+      "name": "FunASR Paraformer-streaming / Whisper-tiny",
+      "size": "~50-100M",
+      "quantization": "INT8",
+      "deploy": "edge",
+      "backend": "端侧流式",
+      "role": "端侧语音识别"
+    },
+    "asr_cloud": {
+      "name": "Whisper-large-v3",
+      "size": "1.5B",
+      "quantization": "INT8",
+      "deploy": "cloud",
+      "backend": "vLLM",
+      "role": "云端语音识别"
+    },
+    "embedding": {
+      "name": "bge-small-zh-v1.5",
+      "size": "~24M",
+      "quantization": "INT8/FP16",
+      "deploy": "cloud",
+      "backend": "vLLM",
+      "role": "L2 起记忆向量索引"
+    }
+  }
+}
