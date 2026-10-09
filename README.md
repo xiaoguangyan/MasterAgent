@@ -11,6 +11,29 @@ Master Agent（整车智能中枢）定位为车载「Agent OS」，由三大子
 | Memory | 知识 Learn（工作 / 情景 / 长期记忆） | `memory/` |
 | 契约层 | 三者间的“必要调用”（SPI + 数据结构） | `contract/` |
 
+车机演示demo
+| android-host | 演示应用可运行在模拟器 | `Android-host/` |
+1.**配置大模型**
+大模型配置文件/master-agent/src/main/resources/model-config.json
+云端相关模型配置，可替换配置模型，自行选用已有模型。端侧模型配置可以不用处理，演示代码因不具备环境条件无法部署端侧模型
+```
+"name": "Qwen2.5-1.5B-Instruct",
+"endpoint": "https://localhost/v1/chat/completions",
+"apiKey": "",
+```
+2.**配置讯飞听写key**
+demo采用讯飞听写模型作为ASR识别。首先，申请讯飞相关应用、key及开通权限
+配置：/android-host/app/src/kotlin/com.xiaoguang.carploit.MainActivity.kt
+```
+ private const val IAT_APP_ID = ""
+ private const val IAT_API_KEY = ""
+ private const val IAT_API_SECRET = ""
+```
+3.部署到模拟器
+首先，syn gradle集成最新master agent等编译后工程。其次，应android-host部署至模拟器，进行应用体验
+demo视频详见：【Master agent Demo in voice on HMI simulator.mp4】
+
+
 ## 工程目录（记忆 / 上下文 / Master Agent 各自独立工程）
 
 ```
