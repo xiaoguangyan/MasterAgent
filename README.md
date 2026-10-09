@@ -10,9 +10,8 @@ Master Agent（整车智能中枢）定位为车载「Agent OS」，由三大子
 | Context | 情境 Situate（实时感知 / 上下文窗口） | `context/` |
 | Memory | 知识 Learn（工作 / 情景 / 长期记忆） | `memory/` |
 | 契约层 | 三者间的“必要调用”（SPI + 数据结构） | `contract/` |
-
-车机演示demo
 | android-host | 演示应用可运行在模拟器 | `Android-host/` |
+
 1.**配置大模型**
 大模型配置文件/master-agent/src/main/resources/model-config.json
 云端相关模型配置，可替换配置模型，自行选用已有模型。端侧模型配置可以不用处理，演示代码因不具备环境条件无法部署端侧模型
