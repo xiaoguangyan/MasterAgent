@@ -1,8 +1,9 @@
-# Master Agent —— 整车智能中枢 MVP
+# Master Agent —— 整车智能中枢
 
 > 版权所有：xiaoguang.yan（8518960@qq.com）
 
-Master Agent（整车智能中枢）定位为车载「Agent OS」，由三大子系统构成：
+Master Agent（整车智能中枢）定位为车载「Agent OS」，由三个子系统构成：
+采用快慢思考混合架构设计，快道指简单指令，如常用车控、导航等功能，慢道指复杂（隐含意图）指令执行，如，先接我女儿后，再去她的英语培训班，再去我公司（指代消解，记忆等能力介入）
 
 | 子系统 | 职责 | 独立工程 |
 | --- | --- | --- |
@@ -64,7 +65,7 @@ MasterAgentDemo/
 
 构建完成后：
 - 端侧演示：`cd master-agent && gradle run`（打印 4×EXECUTE + 1×FALLBACK）
-- 云侧产物：`cloud/gateway/target/gateway-1.0.0.jar`（可执行 jar，`java -jar` 启动）
+- 云侧产物：`cloud/gateway/target/gateway-1.0.0.jar`（可执行 jar，`java -jar` 启动）option
 
 ## 自动化 CI
 
