@@ -1,9 +1,9 @@
-# Master Agent —— 整车智能中枢
+# Master Agent —— 座舱智能中枢
 
 > 版权所有：xiaoguang.yan（8518960@qq.com）
 
-Master Agent（整车智能中枢）定位为车载「Agent OS」，由三个子系统构成：
-采用快慢思考混合架构设计，快道指简单指令，如常用车控、导航等功能，慢道指复杂（隐含意图）指令执行，如，先接我女儿后，再去她的英语培训班，再去我公司（指代消解，记忆等能力介入）。作为智能化消息(数据、主控)中枢，应用可延伸至具身智能多模感知意图场景，如，智能语音机器人，智能音箱，车载后装机器人，电子宠物，智能家电（控制器类）等。当前代码实现为kotlin适用于android系统，但设计可移植成C/C++嵌入式实现。
+Master Agent（座舱智能中枢）定位为车载「Agent OS」，由三个子系统构成：
+采用快慢思考混合架构设计，快道指简单指令，如常用车控、导航等功能，慢道指复杂（隐含意图）指令执行，如，“先接我女儿后，再去她的英语培训班，再去我公司（指代消解，记忆等能力介入）“。作为智能化消息(数据、主控)中枢，应用可延伸至具身智能多模感知意图场景，如，智能语音机器人，智能音箱，车载后装机器人，电子宠物，智能家电（控制器类）等。当前代码实现为kotlin适用于android系统，但设计可移植成C/C++嵌入式实现。
 
 | 子系统 | 职责 | 独立工程 |
 | --- | --- | --- |
@@ -12,6 +12,8 @@ Master Agent（整车智能中枢）定位为车载「Agent OS」，由三个子
 | Memory | 知识 Learn（工作 / 情景 / 长期记忆） | `memory/` |
 | 契约层 | 三者间的“必要调用”（SPI + 数据结构） | `contract/` |
 | android-host | 演示应用可运行在模拟器 | `Android-host/` |
+
+Android端侧演示可独立运行，不依赖cloud功能，仅需要配置LLM。
 
 1.**配置大模型**
 大模型配置文件/master-agent/src/main/resources/model-config.json
@@ -42,7 +44,7 @@ MasterAgentDemo/
 ├── context/         # 上下文工程（L0-L4 分层 / 环形窗口 / 实时车态）—— 独立 Gradle 工程
 ├── memory/          # 记忆工程（工作/情景/长期 + 敏感拦截 + 一键清除）—— 独立 Gradle 工程
 ├── master-agent/    # Master Agent 工程（决策主控 + 领域 Agent + 可运行入口）—— 独立 Gradle 工程
-├── cloud/           # 云侧（Java 17 / Spring Boot 3.2 / Maven 多模块）—— 独立工程
+├── cloud/           # 云侧（Java 17 / Spring Boot 3.2 / Maven 多模块）—— 独立工程（andriod座舱演示可不依赖cloud工程）
 ├── offline-m2/      # 共享离线 Maven 依赖（JUnit 等，保证离线可复现构建）
 ├── build-all.sh     # 一键构建：依次独立构建全部工程
 └── .github/workflows/ci.yml   # 自动化 CI
